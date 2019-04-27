@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * Responsável por obter a conexão com o banco de dados. 
+ * 
  * @author Ilailson Rocha
  *
  */

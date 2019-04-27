@@ -30,11 +30,26 @@ public class PessoaBean {
 	//**************************OPERACIONAL***************************************
 
 
+	/**
+	 * Criar um novo objeto. 
+	 */
+	public String novo() {
+		pessoa = new Pessoa();
+		return "";//permanece na mesma página se for vazio ou nulo. 
+	}
+	
 	public String salvar() {
 		daoGeneric.salvar(pessoa);
 		pessoa = new Pessoa();
 		return ""; //vazio ou null retorna para a mesma página.
 	}
+	
+	public String salvarMerge() {
+		pessoa = daoGeneric.merge(pessoa); // salva ou atualizar e mostra o que foi salvo. Por este motivo o objeto
+											// pessoa está recebendo o DAO. 
+		return ""; //vazio ou null retorna para a mesma página.
+	}
+	
 	
 }
 
