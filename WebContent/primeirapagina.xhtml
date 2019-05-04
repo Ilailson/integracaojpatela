@@ -56,7 +56,19 @@
 			
 			
 		
-		
+			<!-- ============Botões de ação da tabela. Editar e excluir========== -->
+			<!-- value: é o objeto ou seja cada linha com informações -->
+			<!-- target: para onde  vai: ou seja pego a  linha selecionada  
+			e atribui a classe modelo  e pessoa.  -->
+			<h:column>
+				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
+				</h:commandLink>
+			</h:column>
+			
+			
+			
+	
 		</h:dataTable>
 		
 	</h:form>	
