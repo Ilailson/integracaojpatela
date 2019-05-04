@@ -51,5 +51,11 @@ public class PessoaBean {
 	}
 	
 	
+	public String remove() {
+		daoGeneric.deletePorId(pessoa);
+		pessoa = new Pessoa();//chamado um nova pessoa depois que excluir. Limpa os dados da tela.
+		return "";
+	}
+	
 }
 

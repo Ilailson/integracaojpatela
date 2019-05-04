@@ -41,7 +41,14 @@ public class JPAUtil {
 	/**Responsável por identificar o id(primary key) do banco de dados
 	 * 
 	 * Retoranará um objeto (Integer, String, Double, Long etc.....) retoranará o ID do 
-	 * banco de dados
+	 * banco de dados <p>
+	 * 
+	 * getPersistenceUnitUtil: Interface de retorno que fornece acesso a métodos de utilidade
+	 *  para a unidade de persistência. <p>
+	 * 
+	 * getIdentifier: Retorna o ID da entidade. Não é garantido que a ID gerada estará 
+	 * disponível até que a inserção do banco de dados tenha ocorrido. 
+	 * Retorna null se a entidade ainda não tiver um id.
 	 */
 	public static Object getPrimaryKey(Object entity){
 		return factory.getPersistenceUnitUtil().getIdentifier(entity);

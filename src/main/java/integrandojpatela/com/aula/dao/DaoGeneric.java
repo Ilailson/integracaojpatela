@@ -51,4 +51,19 @@ public class DaoGeneric<E> {
 		return retorno; //retorna o objeto com todas as informações. 
 	}
 	
+	
+	public void deletePorId(E entidade){
+		EntityManager entityManager = JPAUtil.getEntityManager();//pegando o entityManager que está na  JPAUTIL
+		EntityTransaction entityTransaction = entityManager.getTransaction();//transação recebendo o entitymanager
+		entityTransaction.begin(); //iniciando a transação. 
+		
+		Object id = JPAUtil.getPrimaryKey(entidade);
+		
+		//entidade.getClass(): pega o  nome da classe de forma genérica		
+		entityManager.createQuery("delete from "+entidade.getClass().getCanonicalName()+ " where id = "+id).executeUpdate();  
+		
+		entityTransaction.commit(); //salvando no banco. 
+		entityManager.close();//fechando a conexão com o banco. 
+	}
+	
 }
