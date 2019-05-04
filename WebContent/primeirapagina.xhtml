@@ -31,6 +31,34 @@
 		<h:commandButton value="Novo" action="#{pessoaBean.novo}"/>
 		<h:commandButton value="Salvar" action="#{pessoaBean.salvarMerge}"/>
 		<h:commandButton value="Remover" action="#{pessoaBean.remove}"/>
+		
+		
+		<!-- ===============INICIO TABELA =========================== -->
+		<h:dataTable value="#{pessoaBean.pessoas}" var="obj">
+			<h:column>
+				<h:outputText value="#{obj.id}"/>
+			</h:column>
+			
+			
+			<h:column>
+				<h:outputText value="#{obj.nome}"/>
+			</h:column>
+			
+			
+			<h:column>
+				<h:outputText value="#{obj.sobrenome}"/>
+			</h:column>
+			
+			
+			<h:column>
+				<h:outputText value="#{obj.idade}"/>
+			</h:column>
+			
+			
+		
+		
+		</h:dataTable>
+		
 	</h:form>	
 </h:body>
 </html>

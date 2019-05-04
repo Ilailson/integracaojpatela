@@ -1,5 +1,7 @@
 package integrandojpatela.com.aula.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -65,5 +67,25 @@ public class DaoGeneric<E> {
 		entityTransaction.commit(); //salvando no banco. 
 		entityManager.close();//fechando a conexão com o banco. 
 	}
+	
+	/**
+	 * Responsável por mostrar os dados salvos no  banco de forma genérica. 
+	 * @param entidade classe de  forma genérica. . 
+	 * @return todos os dados do banco. 
+	 */
+	public List<E> getListEntity(Class<E> entidade){
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		//getName(): metodo responsável por carregar os nomes na lista. 
+		List<E> retorno = entityManager.createQuery("from " + entidade.getName()).getResultList();
+		
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return retorno;
+	}
+	
 	
 }
