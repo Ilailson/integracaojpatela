@@ -66,8 +66,16 @@
 				</h:commandLink>
 			</h:column>
 			
-			
-			
+			<!-- value: é o objeto ou seja cada linha com informações -->
+			<!-- target: para onde  vai: ou seja pego a  linha selecionada  
+			e atribui a classe modelo  e pessoa.
+			action: mesmo método que executa a ação de excluir do botão fora da tabela  -->
+			<h:column>
+				<h:commandLink value="Excluir" action="#{pessoaBean.remove}">
+					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
+				</h:commandLink>
+			</h:column>
+			<!--================================ Fim botão ação -->
 	
 		</h:dataTable>
 		
