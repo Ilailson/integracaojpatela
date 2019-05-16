@@ -39,6 +39,18 @@
 				<f:selectItem itemValue="Feminino" />
 			</h:selectOneMenu>
 			
+			
+			<h:outputLabel value="Frameworks: "/>
+			<h:selectManyMenu id="campoFram" value="#{pessoaBean.pessoa.frameworks}" required="true"
+			style="height:100px"><!-- height: altura para mostrar todo o conteúdo -->
+				<f:selectItem itemValue="Hibernate"  /><!-- f:selectItem: Deixa valores fixo para salvar no banco de dados. -->
+				<f:selectItem itemValue="Java" />
+				<f:selectItem itemValue="PHP" />
+				<f:selectItem itemValue=".NET" />
+				<f:selectItem itemValue="C++" />
+				<f:selectItem itemValue="Spring" />
+			</h:selectManyMenu>
+			
 			<h:outputLabel/>
 			<h:panelGroup>
 				<h:commandButton action="#{pessoaBean.novo}" value="Novo"/>
