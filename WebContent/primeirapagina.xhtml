@@ -32,17 +32,23 @@
 			<h:outputLabel value="Idade: "/>
 			<h:inputText value="#{pessoaBean.pessoa.idade}"/>
 			
+			<h:outputLabel value="Sexo: "/>
+			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="true">
+				<f:selectItem itemValue="Não" itemLabel="[-Selecione-]" noSelectionOption="true"/> <!-- noSelectionOption: Não salva no banco enquanto não escolher um valor correto -->
+				<f:selectItem itemValue="Masculino"  /><!-- f:selectItem: Deixa valores fixo para salvar no banco de dados. -->
+				<f:selectItem itemValue="Feminino" />
+			</h:selectOneMenu>
+			
 			<h:outputLabel/>
 			<h:panelGroup>
 				<h:commandButton action="#{pessoaBean.novo}" value="Novo"/>
 					
-					
 				<h:commandButton action="#{pessoaBean.salvarMerge}" value="Salvar"/>
 					
-				
 				<h:commandButton action="#{pessoaBean.remove}" value="Remover" />
 			</h:panelGroup>
 		</h:panelGrid>
+
 		
 		<!-- ===============INICIO TABELA =========================== -->
 		<h:dataTable value="#{pessoaBean.pessoas}" var="obj" border="3" cellpadding="6">
