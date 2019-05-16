@@ -11,46 +11,63 @@
 
 <h:body>
 	<h:form id="formPessoa">
-		<h:outputLabel value="ID: "/>
-		<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"/> <!-- Habilitando somente leitura -->
-		<br/>
-		
-		<h:outputLabel value="Nome: "/>
-		<h:inputText value="#{pessoaBean.pessoa.nome}"/> 
-		<br/>
-		
-		<h:outputLabel value="Sobrenome: "/>
-		<h:inputText value="#{pessoaBean.pessoa.sobrenome}"/>
-		<br/>
-		
-		<h:outputLabel value="Idade: "/>
-		<h:inputText value="#{pessoaBean.pessoa.idade}"/>
-		<br/>
-		
-		
-		<h:commandButton value="Novo" action="#{pessoaBean.novo}"/>
-		<h:commandButton value="Salvar" action="#{pessoaBean.salvarMerge}"/>
-		<h:commandButton value="Remover" action="#{pessoaBean.remove}"/>
-		
+		<h:graphicImage library="img" name="corinthians.jpg" width="50" height="50"/>
+		<h:outputLabel value=" "/>
+		<h:graphicImage width="250" height="50"
+		value="https://img.r7.com/images/2017/10/31/628d9y4jfr_6dhcr2bcg9_file"/>
+	
+		<h:panelGrid columns="2">
+			<h:outputLabel value="ID: "/>
+			<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true"/> 
+			
+			
+			<h:outputLabel value="Nome: "/>
+			<h:inputText value="#{pessoaBean.pessoa.nome}"/> 
+			
+			
+			<h:outputLabel value="Sobrenome: "/>
+			<h:inputText value="#{pessoaBean.pessoa.sobrenome}"/>
+			
+			
+			<h:outputLabel value="Idade: "/>
+			<h:inputText value="#{pessoaBean.pessoa.idade}"/>
+			
+			<h:outputLabel/>
+			<h:panelGroup>
+				<h:commandButton action="#{pessoaBean.novo}" value="Novo"/>
+					
+					
+				<h:commandButton action="#{pessoaBean.salvarMerge}" value="Salvar"/>
+					
+				
+				<h:commandButton action="#{pessoaBean.remove}" value="Remover" />
+			</h:panelGroup>
+		</h:panelGrid>
 		
 		<!-- ===============INICIO TABELA =========================== -->
-		<h:dataTable value="#{pessoaBean.pessoas}" var="obj">
+		<h:dataTable value="#{pessoaBean.pessoas}" var="obj" border="3" cellpadding="6">
+			<f:facet name="header">Lista de Usuários</f:facet>
+			
 			<h:column>
+				<f:facet name="header">ID</f:facet>
 				<h:outputText value="#{obj.id}"/>
 			</h:column>
 			
 			
 			<h:column>
+				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{obj.nome}"/>
 			</h:column>
 			
 			
 			<h:column>
+				<f:facet name="header">Sobrenome</f:facet>
 				<h:outputText value="#{obj.sobrenome}"/>
 			</h:column>
 			
 			
 			<h:column>
+				<f:facet name="header">Idade</f:facet>
 				<h:outputText value="#{obj.idade}"/>
 			</h:column>
 			
@@ -61,24 +78,26 @@
 			<!-- target: para onde  vai: ou seja pego a  linha selecionada  
 			e atribui a classe modelo  e pessoa.  -->
 			<h:column>
-				<h:commandLink value="Editar">
+			<f:facet name="header">Ação</f:facet>
+				<h:commandLink >
+					<h:graphicImage library="icon" name="editar.jpg" width="25" height="25" />
 					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
 				</h:commandLink>
-			</h:column>
-			
-			<!-- value: é o objeto ou seja cada linha com informações -->
-			<!-- target: para onde  vai: ou seja pego a  linha selecionada  
-			e atribui a classe modelo  e pessoa.
-			action: mesmo método que executa a ação de excluir do botão fora da tabela  -->
-			<h:column>
-				<h:commandLink value="Excluir" action="#{pessoaBean.remove}">
+				
+				<h:outputLabel value=" "/>
+				
+				<!-- value: é o objeto ou seja cada linha com informações -->
+				<!-- target: para onde  vai: ou seja pego a  linha selecionada  
+				e atribui a classe modelo  e pessoa.
+				action: mesmo método que executa a ação de excluir do botão fora da tabela  -->
+				<h:commandLink action="#{pessoaBean.remove}">
+					<h:graphicImage library="icon" name="excluir.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
 				</h:commandLink>
 			</h:column>
 			<!--================================ Fim botão ação -->
 	
 		</h:dataTable>
-		
 	</h:form>	
 </h:body>
 </html>
