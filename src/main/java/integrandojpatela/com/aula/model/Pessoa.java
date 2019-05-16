@@ -32,6 +32,8 @@ public class Pessoa implements Serializable {
 	
 	private String [] frameworks; //como vamos selecionar vários nomes tem que ser um array
 	
+	private Boolean ativo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -77,6 +79,14 @@ public class Pessoa implements Serializable {
 	
 	public void setFrameworks(String[] frameworks) {
 		this.frameworks = frameworks;
+	}
+	
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 	
 	@Override

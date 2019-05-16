@@ -51,6 +51,9 @@
 				<f:selectItem itemValue="Spring" />
 			</h:selectManyMenu>
 			
+			<h:outputLabel value="Ativo "/>
+			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
+			
 			<h:outputLabel/>
 			<h:panelGroup>
 				<h:commandButton action="#{pessoaBean.novo}" value="Novo"/>
