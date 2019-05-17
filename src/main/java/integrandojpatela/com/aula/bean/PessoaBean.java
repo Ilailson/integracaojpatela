@@ -6,10 +6,23 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 import integrandojpatela.com.aula.dao.DaoGeneric;
+import integrandojpatela.com.aula.filter.FilterAutenticacao;
 import integrandojpatela.com.aula.model.Pessoa;
-
+import integrandojpatela.com.aula.repository.IDaoPessoa;
+import integrandojpatela.com.aula.repository.IDaoPessoaImpl;
+/**
+ * Responsável pelo controle de pessoas. <p>
+ * @author Ilailson Rocha
+ * 
+ * @see FilterAutenticacao
+ * @see IDaoPessoa
+ * @see IDaoPessoaImpl
+ *
+ */
 @ViewScoped
 @ManagedBean(name="pessoaBean")
 public class PessoaBean {
@@ -17,6 +30,8 @@ public class PessoaBean {
 	private Pessoa pessoa = new Pessoa();
 	private DaoGeneric<Pessoa> daoGeneric = new DaoGeneric<Pessoa>();//informando a classe que será realizada o crud de forma genérica.
 	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
+	
+	private IDaoPessoa iDaoPessoa = new IDaoPessoaImpl(); //interface é igual a implentação
 	
 	
 	//********************SET E GET******************************
@@ -89,6 +104,26 @@ public class PessoaBean {
 	public void carregarPessoas() {
 		pessoas = daoGeneric.getListEntity(Pessoa.class);
 	}
+	
+	
+	public String logar() {
+
+		Pessoa pessoaUser = iDaoPessoa.consultarUsuario(pessoa.getLogin(), pessoa.getSenha());
+
+		if (pessoaUser != null) {// achou o usuario
+
+			// adicionar o usuário na sessação usuarioLogado do filterAutenticacao
+			FacesContext context = FacesContext.getCurrentInstance();
+			ExternalContext externalContext = context.getExternalContext();
+			externalContext.getSessionMap().put("usuarioLogado", pessoaUser);
+
+			return "primeirapagina.jsf";
+		}
+
+		return "index.jsf";
+		
+	}
+	
 	
 }
 
