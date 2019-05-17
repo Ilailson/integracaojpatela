@@ -74,7 +74,10 @@
 					
 				<h:commandButton action="#{pessoaBean.salvarMerge}" image="/resources/icon/save.png" title="Salvar ou atualizar"/>
 					
-				<h:commandButton action="#{pessoaBean.remove}"  image="/resources/icon/delete.png" title="Remover Cadastro"/>
+				<h:commandButton action="#{pessoaBean.remove}"  
+				image="/resources/icon/delete.png" title="Remover Cadastro"
+				rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}"/>
+				<!-- Rendered: Só aparece se for administrador -->
 			</h:panelGroup>
 		</h:panelGrid>
 
@@ -125,7 +128,9 @@
 				<!-- target: para onde  vai: ou seja pego a  linha selecionada  
 				e atribui a classe modelo  e pessoa.
 				action: mesmo método que executa a ação de excluir do botão fora da tabela  -->
-				<h:commandLink action="#{pessoaBean.remove}" immediate="true">
+				<h:commandLink action="#{pessoaBean.remove}" immediate="true" 
+				rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}"
+				><!-- rendered: Só aparece se for administrador -->
 					<h:graphicImage library="icon" name="excluir.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
 				</h:commandLink>

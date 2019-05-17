@@ -124,6 +124,25 @@ public class PessoaBean {
 		
 	}
 	
+	/**
+	 * Responsável por definir quem pode acessar páginas, componentes, tabelas e etc... 
+	 * dentro do sistema de acordo com o perfil do usuário. <p>
+	 * 
+	 * Nesse sistema tem três perfil: ADMINISTRADOR, SECRETARIO E RECIPCIONISTA. Através 
+	 * destes pefins posso ocultador qualquer componente na visão (botão, tabela, coluna etc..)
+	 * 
+	 * Rendered: é responsável por exibir ou não um componente na tela.
+	 */
+	public boolean permitirAcesso (String acesso) {
+		//Essas três linhas recupara o usuário que está logado na sessação usuarioLogado do filterAutenticacao
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Pessoa pessoaUser = (Pessoa) externalContext.getSessionMap().get("usuarioLogado");
+		
+		return pessoaUser.getPerfilUser().equals(acesso);// retorna verdadeiiro ou falso. Ou seja se o perfil for
+														// liberado ele mostra o componente na tela.
+	}
+	
 	
 }
 
