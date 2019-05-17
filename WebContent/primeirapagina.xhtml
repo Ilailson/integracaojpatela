@@ -33,7 +33,7 @@
 			<h:inputText value="#{pessoaBean.pessoa.idade}"/>
 			
 			<h:outputLabel value="Sexo: "/>
-			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="true">
+			<h:selectOneMenu id="campoSexo" value="#{pessoaBean.pessoa.sexo}" required="false">
 				<f:selectItem itemValue="Não" itemLabel="[-Selecione-]" noSelectionOption="true"/> <!-- noSelectionOption: Não salva no banco enquanto não escolher um valor correto -->
 				<f:selectItem itemValue="Masculino"  /><!-- f:selectItem: Deixa valores fixo para salvar no banco de dados. -->
 				<f:selectItem itemValue="Feminino" />
@@ -53,6 +53,20 @@
 			
 			<h:outputLabel value="Ativo "/>
 			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
+			
+			<h:outputLabel value="login: "/>
+			<h:inputText value="#{pessoaBean.pessoa.login}"/>
+			
+			<h:outputLabel value="Senha: "/>
+			<h:inputSecret value="#{pessoaBean.pessoa.senha}"/>
+			
+			<h:outputLabel value="Perfil: "/>
+			<h:selectOneMenu id="perfil" value="#{pessoaBean.pessoa.perfilUser}" required="false">
+				<f:selectItem itemValue="Não" itemLabel="[-Selecione-]" noSelectionOption="true"/> <!-- noSelectionOption: Não salva no banco enquanto não escolher um valor correto -->
+				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"  /><!-- f:selectItem: Deixa valores fixo para salvar no banco de dados. -->
+				<f:selectItem itemValue="SECRETARIO" itemLabel="Secretário" />
+				<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista" />
+			</h:selectOneMenu>
 			
 			<h:outputLabel/>
 			<h:panelGroup>
@@ -100,7 +114,7 @@
 			e atribui a classe modelo  e pessoa.  -->
 			<h:column>
 			<f:facet name="header">Ação</f:facet>
-				<h:commandLink >
+				<h:commandLink  immediate="true">
 					<h:graphicImage library="icon" name="editar.jpg" width="25" height="25" />
 					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
 				</h:commandLink>
@@ -111,7 +125,7 @@
 				<!-- target: para onde  vai: ou seja pego a  linha selecionada  
 				e atribui a classe modelo  e pessoa.
 				action: mesmo método que executa a ação de excluir do botão fora da tabela  -->
-				<h:commandLink action="#{pessoaBean.remove}">
+				<h:commandLink action="#{pessoaBean.remove}" immediate="true">
 					<h:graphicImage library="icon" name="excluir.png" width="25" height="25"/>
 					<f:setPropertyActionListener value="#{obj}" target="#{pessoaBean.pessoa}"/>
 				</h:commandLink>
