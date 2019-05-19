@@ -10,7 +10,15 @@
 </h:head>
 
 <h:body>
-	<h:form id="formPessoa">
+	<h:form>
+		<h:commandLink value="Lançamentos" action="lancamento" style="margin-left:1cm;"/>
+		<h:commandLink value="Administração" action="primeirapagina" style="margin-left:1cm;"/>
+		<h:commandLink value="Trocar Usuário" action="index" style="margin-left:1cm;"/>
+	
+	</h:form>
+	
+	<!-- Só quem tiver perfil de administrador vai vê esse formulário -->
+	<h:form id="formPessoa" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
 		<h:graphicImage library="img" name="corinthians.jpg" width="50" height="50"/>
 		<h:outputLabel value=" "/>
 		<h:graphicImage width="250" height="50"
@@ -51,8 +59,7 @@
 				<f:selectItem itemValue="Spring" />
 			</h:selectManyMenu>
 			
-			<h:outputLabel value="Ativo "/>
-			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
+
 			
 			<h:outputLabel value="login: "/>
 			<h:inputText value="#{pessoaBean.pessoa.login}"/>

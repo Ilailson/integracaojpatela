@@ -32,7 +32,7 @@ public class Pessoa implements Serializable {
 	
 	private String [] frameworks; //como vamos selecionar vários nomes tem que ser um array
 	
-	private Boolean ativo;
+	//private Boolean ativo;
 	
 	private String login;
 	
@@ -88,13 +88,13 @@ public class Pessoa implements Serializable {
 		this.frameworks = frameworks;
 	}
 	
-	public Boolean getAtivo() {
-		return ativo;
-	}
-	
-	public void setAtivo(Boolean ativo) {
-		this.ativo = ativo;
-	}
+//	public Boolean getAtivo() {
+//		return ativo;
+//	}
+//	
+//	public void setAtivo(Boolean ativo) {
+//		this.ativo = ativo;
+//	}
 	
 	public String getLogin() {
 		return login;
