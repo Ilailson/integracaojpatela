@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -84,6 +85,7 @@ public class PessoaBean {
 		pessoa = daoGeneric.merge(pessoa); // salva ou atualizar e mostra o que foi salvo. Por este motivo o objeto
 											// pessoa está recebendo o DAO. 
 		carregarPessoas();
+		mostrarMsg("Cadastrado com sucesso");
 		return ""; //vazio ou null retorna para a mesma página.
 	}
 	
@@ -92,6 +94,7 @@ public class PessoaBean {
 		daoGeneric.deletePorId(pessoa);
 		pessoa = new Pessoa();//chamado um nova pessoa depois que excluir. Limpa os dados da tela.
 		carregarPessoas();
+		mostrarMsg("Removido com sucesso");
 		return "";
 	}
 	
@@ -141,6 +144,19 @@ public class PessoaBean {
 		
 		return pessoaUser.getPerfilUser().equals(acesso);// retorna verdadeiiro ou falso. Ou seja se o perfil for
 														// liberado ele mostra o componente na tela.
+	}
+	
+	/**
+	 * Responsável por exibir mensagens na tela de informações positivas
+	 * ou negativas para os usuários. <p>
+	 * 
+	 * Dentro do formulário tem adicionar o atributo messages
+	 * @param msg Mensagem que será exibida para o usuário
+	 */
+	private void mostrarMsg(String msg) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		FacesMessage message = new FacesMessage(msg);
+		context.addMessage(null, message);//null: não será associado a nenhum componente
 	}
 	
 	

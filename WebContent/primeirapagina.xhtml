@@ -19,6 +19,11 @@
 	
 	<!-- Só quem tiver perfil de administrador vai vê esse formulário -->
 	<h:form id="formPessoa" rendered="#{pessoaBean.permitirAcesso('ADMINISTRADOR')}">
+		
+		<h:messages infoStyle="color:green;background:#6495ED;" /> <!--Responsável por exibir avisos na tela para os usuários
+		                                       Color: altera a cor (opcional)
+		                                       background: cor de fundo (opcional)  -->
+		
 		<h:graphicImage library="img" name="corinthians.jpg" width="50" height="50"/>
 		<h:outputLabel value=" "/>
 		<h:graphicImage width="250" height="50"
