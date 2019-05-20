@@ -18,7 +18,7 @@
 	</h:form>
 	
 	<!-- style="margin-top:22%; margin-left:40%: deixa a tela no meio -->
-<h:form id="formLancamento" style="margin-top:22%; margin-left:40%;">
+<h:form id="formLancamento">
 	<h1>Realize o login</h1>
 	
 	<h:panelGrid columns="2">
@@ -81,6 +81,24 @@
 		<h:column>
 		   <f:facet name="header">Destino</f:facet>
 		   <h:outputLabel value="#{lancamento.empresaDestino}"/> 
+		</h:column>
+		
+		
+		
+		<h:column>
+			<f:facet name="header">Ação</f:facet>
+			<h:commandLink title="Editar" action="#{lancamentoBean.salvar}">
+				<h:graphicImage library="icon" name="editar.jpg" width="30" height="30"/>
+				
+				<f:setPropertyActionListener target="#{lancamentoBean.lancamento}"
+				value="#{lancamento}" />
+			</h:commandLink>
+			
+			<h:commandLink action="#{lancamentoBean.remove}" title="Excluir" >
+			<f:setPropertyActionListener target="#{lancamentoBean.lancamento}"
+			value="#{lancamento}" />
+				<h:graphicImage library="icon" name="delete.png" width="30" height="30" />
+			</h:commandLink>
 		</h:column>
 	</h:dataTable>    
 </h:form>
