@@ -75,6 +75,20 @@
 				<f:selectItem itemValue="RECEPCIONISTA" itemLabel="Recepcionista" />
 			</h:selectOneMenu>
 			
+			<h:outputLabel value="Sexo"/>
+			<h:selectOneMenu value="#{pessoaBean.pessoa.sexo}">
+				<f:selectItem itemValue="M" itemLabel="Masculino"/>
+				<f:selectItem itemValue="F" itemLabel="Feminino"/>
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Nivel de programação"/>
+			<h:selectOneRadio value="#{pessoaBean.pessoa.nivelProgramador}"><!-- Será escolhido uma  -->
+				<f:selectItem itemValue="J" itemLabel="Junior"/>
+				<f:selectItem itemValue="P" itemLabel="Pleno"/>
+				<f:selectItem itemValue="S" itemLabel="Sênior"/>
+				<f:selectItem itemValue="E" itemLabel="Expecialista"/>
+			</h:selectOneRadio>
+			
 			<h:outputLabel/>
 			<h:panelGroup>
 				<h:commandButton action="#{pessoaBean.novo}" image="/resources/icon/add.png" title="Cadastrar Novo"/> <h:outputLabel value="  "/>
@@ -115,6 +129,7 @@
 				<f:facet name="header">Idade</f:facet>
 				<h:outputText value="#{obj.idade}"/>
 			</h:column>
+			
 			
 			
 		
