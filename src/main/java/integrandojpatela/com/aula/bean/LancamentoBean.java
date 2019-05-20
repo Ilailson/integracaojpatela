@@ -90,5 +90,30 @@ public class LancamentoBean {
 		
 	}
 	
+	
+	public String novo() {
+		lancamento  = new Lancamento();
+		return "";
+	}
+	
+	public String remove() {
+		daoGeneric.deletePorId(lancamento);
+		lancamento = new Lancamento();
+		
+		carregarLancamentos(); //carrega os lançamentos após salvar
+		
+		return "";
+	}
+	
 }
+
+/*Carregará os lançamentos somente do usuário Logado.
+ *+++++++++++++++ METODO CARREGAR LANÇAMENTOS+++++++++++++++++++++++++++
+ * 1 - Criar a interface IDaoLancamento	
+ * 2 - cria a implentação IDaoLancamentoImpl
+ * 3 - Instancia a interface no managedBean adicionando a implentação como váriavel global.
+ * Não é necessário criar get e set.
+ * 4 - Pega o usuario logado (as tres linhas)
+ * 5 - lista de lançamentos recebe somente os lançamentos do usuário logado através do id.
+ */
 
