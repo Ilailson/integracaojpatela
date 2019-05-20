@@ -114,7 +114,14 @@
 			
 			<h:outputLabel/>
 			<h:panelGroup>
-				<h:commandButton action="#{pessoaBean.novo}" image="/resources/icon/add.png" title="Cadastrar Novo"/> <h:outputLabel value="  "/>
+				<h:commandButton action="#{pessoaBean.novo}" id="botaoNovo"
+				 image="/resources/icon/add.png" title="Cadastrar Novo"
+				 >
+					<f:ajax execute="botaoNovo" render="@form"/> <!--render="@form":especificando o formulario pai  deste botão. 
+																 Vai para o lado do ManagedBean executa o metodo novo
+																 e Recarregar o formulário  -->
+				</h:commandButton>
+				 <h:outputLabel value="  "/>
 					
 				<h:commandButton action="#{pessoaBean.salvarMerge}" image="/resources/icon/save.png" title="Salvar ou atualizar"/>
 					
@@ -124,8 +131,9 @@
 				<!-- Rendered: Só aparece se for administrador -->
 			</h:panelGroup>
 		</h:panelGrid>
-
+	</h:form>
 		
+	<h:form id="formTable">	
 		<!-- ===============INICIO TABELA =========================== -->
 		<h:dataTable value="#{pessoaBean.pessoas}" var="obj" border="3" cellpadding="6">
 			<f:facet name="header">Lista de Usuários</f:facet>
@@ -183,6 +191,7 @@
 			<!--================================ Fim botão ação -->
 	
 		</h:dataTable>
-	</h:form>	
+	</h:form>
+	
 </h:body>
 </html>
