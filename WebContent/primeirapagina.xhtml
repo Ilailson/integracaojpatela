@@ -89,6 +89,18 @@
 				<f:selectItem itemValue="E" itemLabel="Expecialista"/>
 			</h:selectOneRadio>
 			
+			<h:outputLabel value="Linguagens"/>
+			<h:selectManyCheckbox value="#{pessoaBean.pessoa.liguagens}" 
+			layout="pageDirection"><!-- Pode selecionar todas as opções ou não -->
+				<f:selectItem itemValue="1" itemLabel="Java"/>
+				<f:selectItem itemValue="2" itemLabel="Php"/>
+				<f:selectItem itemValue="3" itemLabel="C#"/>
+				<f:selectItem itemValue="4" itemLabel="C++"/>
+				<f:selectItem itemValue="5" itemLabel="Cobol"/>
+			
+			</h:selectManyCheckbox>
+			
+			
 			<h:outputLabel/>
 			<h:panelGroup>
 				<h:commandButton action="#{pessoaBean.novo}" image="/resources/icon/add.png" title="Cadastrar Novo"/> <h:outputLabel value="  "/>

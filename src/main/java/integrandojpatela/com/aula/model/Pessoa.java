@@ -42,6 +42,7 @@ public class Pessoa implements Serializable {
 	
 	private String nivelProgramador;
 	
+	private Integer [] liguagens;//como vamos selecionar várias liguagens tem que ser um array
 	
 	public Long getId() {
 		return id;
@@ -128,6 +129,14 @@ public class Pessoa implements Serializable {
 	
 	public void setNivelProgramador(String nivelProgramador) {
 		this.nivelProgramador = nivelProgramador;
+	}
+	
+	public Integer[] getLiguagens() {
+		return liguagens;
+	}
+	
+	public void setLiguagens(Integer[] liguagens) {
+		this.liguagens = liguagens;
 	}
 	
 	@Override
