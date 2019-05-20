@@ -11,11 +11,8 @@
 </h:head>
 
 <h:body>
-<h:form>
-	<h:commandLink value="Lançamentos" action="lancamento" style="margin-left:1cm;"/>
-		<h:commandLink value="Administração" action="primeirapagina" style="margin-left:1cm;"/>
-		<h:commandLink value="Trocar Usuário" action="index" style="margin-left:1cm;"/>
-	</h:form>
+
+<ui:include src="/componentes/menu.xhtml"/> <!-- Incluindo o menu na página -->
 	
 	<!-- style="margin-top:22%; margin-left:40%: deixa a tela no meio -->
 <h:form id="formLancamento">
