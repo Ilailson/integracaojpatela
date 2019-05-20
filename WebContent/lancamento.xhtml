@@ -52,8 +52,37 @@
 					/>
 			</h:panelGroup>	 
 	</h:panelGrid>
+	
+	<!-- ===============TABELA DE LANÇAMENTOS============================ -->
+	<h:dataTable value="#{lancamentoBean.todosLancamentos}" var="lancamento" 
+	 border="3" cellpadding="6">
+	    <f:facet name="header">Lançamentos</f:facet>
 	    
-	    
+		<h:column>
+		   <f:facet name="header">#</f:facet>
+		   <h:outputLabel value="#{lancamento.id}"/> 
+		</h:column>
+		
+		<h:column>
+		   <f:facet name="header">Usuário</f:facet>
+		   <h:outputLabel value="#{lancamento.usuario.nome}"/> 
+		</h:column>
+		    	
+		<h:column>
+		   <f:facet name="header">Nota</f:facet>
+		    <h:outputLabel value="#{lancamento.numeroNotaFiscal}"/> 
+		</h:column>    	
+		    	
+		<h:column>
+		   <f:facet name="header">Origem</f:facet>
+		   <h:outputLabel value="#{lancamento.empresaOrigem}"/> 
+		</h:column>
+		    	
+		<h:column>
+		   <f:facet name="header">Destino</f:facet>
+		   <h:outputLabel value="#{lancamento.empresaDestino}"/> 
+		</h:column>
+	</h:dataTable>    
 </h:form>
 </h:body>
 
